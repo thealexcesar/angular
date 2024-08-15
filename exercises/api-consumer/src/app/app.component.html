@@ -1,1 +1,15 @@
-<fa-icon [icon]="['fas', 'home']"></fa-icon>
+<main style="height: 100vh">
+    <header>
+        <nav class="container container-flex">
+            <span><a href="#"><fa-icon [icon]="['fas', 'home']"></fa-icon></a></span>
+            <ul class="inline-child ">
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="content">
+        <app-home></app-home>
+    </section>
+</main>

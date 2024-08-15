@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=G:ital,wght@0,100..900;1,100..900&display=swap')
-
+//@import url('https://fonts.googleapis.com/css2?family=Grey+Qo&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap')
 /** Table of Content
   -----------------------------
   1.0 Reset
@@ -13,6 +12,14 @@
   5.0 Light Theme
  --------------------------- */
 
+/* Variables
+  ---------------------------------------------------------------------------------------------- */
+$graphite: #212529
+$dark: #171717
+$light: #f5f1eb
+$link: #4493f8
+/* End Variables ------------------------------------------------------------------------------- */
+
 /* Reset
   ---------------------------------------------------------------------------------------------- */
 *
@@ -24,29 +31,19 @@
 body
   height: 100vh
   width: 100vw
-  font-family: "Montserrat", Helvetica, Arial, sans-serif
+  font-family: sans-serif, Arial
   -webkit-font-smoothing: antialiased
-
-img
-  width: 100%
-  height: 100%
-  max-width: 100%
-
-ul, li, a, button
-  list-style: none
-  text-decoration: none
-  padding: 0
-  margin: 0
+  img
+    width: 100%
+    height: 100%
+    max-width: 100%
+  ul, li, a, button
+    list-style: none
+    text-decoration: none
+    padding: 0
+    margin: 0
 
 /* End Reset ----------------------------------------------------------------------------------- */
-
-/* Variables
-  ---------------------------------------------------------------------------------------------- */
-$dark: #030712
-$slate-900: #0F172A
-$slate-950: #020617
-$light: #F8FAFC
-/* End Variables ------------------------------------------------------------------------------- */
 
 /* Mixins
   ---------------------------------------------------------------------------------------------- */
@@ -57,28 +54,87 @@ $light: #F8FAFC
   transition: $props $time $timing-function
 
 @mixin theme-styles($color, $border-color, $background-start, $background-end)
-  $darken: adjust-color($color, $lightness: -30%)
+  $darken: adjust-color($background-start, $lightness: - 20%)
   body
     color: $color
-    background: linear-gradient(to bottom, $background-start, $background-end)
+    background: linear-gradient(to bottom, $background-end, $background-start)
     @include transition(0.2s, color)
-
+    header
+      margin: 0 0 20px 0
+      padding-top: 10px
+      width: 100vw
+      height: 10vh
+      min-height: 50px
+      max-height: 60px
+      border-bottom: 1px solid $background-start
+      box-shadow: 0 1px 6px $darken
+      background-color: $background-end
+    a
+      color: $color
+      &:hover
+        text-decoration: underline
+        color: $link
+        @include transition(400ms)
+    button
+      border: 1px solid $color
+      &:hover
+        color: $background-start
+        background-color: $color
+        @include transition()
+    #form-search
+      float: right
+    input[type="text"]
+      border: 1px solid $color
 /* End Mixins ---------------------------------------------------------------------------------- */
 
 /* Dark Theme
   ---------------------------------------------------------------------------------------------- */
 [data-theme="dark"]
-  $background-end: $slate-900
-  $background-start: $slate-950
+  $background-start: $dark
+  $background-end: $graphite
   $foreground: $light
   @include theme-styles($foreground, $dark, $background-start, $background-end)
+  a
+    color: $link
 /* End Dark Theme ------------------------------------------------------------------------------ */
 
 /* Light Theme
   ---------------------------------------------------------------------------------------------- */
 [data-theme="light"]
-  $background-end: #FFF
+  $background-end: #fff
   $background-start: $light
   $foreground: $dark
   @include theme-styles($foreground, $light, $background-start, $background-end)
 /* End Light Theme ----------------------------------------------------------------------------- */
+
+.container
+  margin: 0 10px
+  padding: 0 10px
+
+.container-flex
+  display: flex
+  justify-content: space-between
+  align-items: center
+  width: auto
+  max-width: 100%
+  padding-top: 10px
+  padding-right: 20px
+
+.inline-child
+  list-style: none
+  align-items: center
+  display: flex
+  margin: 0
+  padding: 0
+
+  li
+    padding-left: 10px
+    display: flex
+    align-items: center
+
+    &:first-child
+      padding-left: 0
+
+.fa-icon
+  display: flex
+  align-items: center
