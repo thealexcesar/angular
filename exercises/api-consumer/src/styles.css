@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=G:ital,wght@0,100..900;1,100..900&display=swap");
+/** Table of Content
+ * -----------------------------
+ * 1.0 Reset
+ * 2.0 Variables
+ *
+ * 3.0 Mixins
+ * 3.1 transition
+ * 3.3 Theme
+ *
+ * 4.0 Dark Theme
+ * 5.0 Light Theme
+ * --------------------------- */
+/* Reset
+ * ---------------------------------------------------------------------------------------------- */
+* {
+  border: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+ul, li, a, button {
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* End Reset ----------------------------------------------------------------------------------- */
+/* Variables
+ * ---------------------------------------------------------------------------------------------- */
+/* End Variables ------------------------------------------------------------------------------- */
+/* Mixins
+ * ---------------------------------------------------------------------------------------------- */
+/* End Mixins ---------------------------------------------------------------------------------- */
+/* Dark Theme
+ * ---------------------------------------------------------------------------------------------- */
+[data-theme=dark] body {
+  color: #F8FAFC;
+  background: linear-gradient(to bottom, #020617, #0F172A);
+  -webkit-transition: color 0.2s ease-in-out;
+  -moz-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+/* End Dark Theme ------------------------------------------------------------------------------ */
+/* Light Theme
+ * ---------------------------------------------------------------------------------------------- */
+[data-theme=light] body {
+  color: #030712;
+  background: linear-gradient(to bottom, #F8FAFC, #FFF);
+  -webkit-transition: color 0.2s ease-in-out;
+  -moz-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+/* End Light Theme ----------------------------------------------------------------------------- */
+
+/*# sourceMappingURL=styles.css.map */
