@@ -14,7 +14,6 @@ import {LocationService} from "../../../services/location.service";
 })
 export class LocationComponent implements OnInit {
     locations: Locations[] = [];
-    filterText: string = '';
     selectedId: number | null = null;
 
     constructor(private locationService: LocationService) {
@@ -30,8 +29,13 @@ export class LocationComponent implements OnInit {
 
     async fetchLocationById(): Promise<void> {
         if (this.selectedId !== null) {
-            const location = await this.locationService.getLocationById(Number(this.selectedId));
-            this.locations = location ? [location] : [];
+            const location: Locations | undefined = await this.locationService.getLocationById(Number(this.selectedId));
+            if (location) {
+                this.locations = [location];
+            } else {
+                alert('Localização não encontrada.');
+                this.locations = [];
+            }
         }
     }
 
@@ -39,20 +43,9 @@ export class LocationComponent implements OnInit {
         const confirmDelete = window.confirm(`Certeza que deseja deletar? ${id}?`);
         if (confirmDelete) {
             await this.locationService.deleteLocation(id);
-            alert(`Localização de ID ${id} deletada com sucesso.`);
+            console.log(`Localização de ID ${id} deletada com sucesso.`);
             this.fetchLocations();
         }
     }
 
-    filterLocations(): void {
-        if (this.filterText) {
-            this.locations = this.locations.filter(location =>
-                location.name.toLowerCase().includes(this.filterText.toLowerCase()) ||
-                location.city.toLowerCase().includes(this.filterText.toLowerCase()) ||
-                location.state.toLowerCase().includes(this.filterText.toLowerCase())
-            );
-        } else {
-            this.fetchLocations();
-        }
-    }
 }

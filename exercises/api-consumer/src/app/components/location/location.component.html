@@ -1,18 +1,20 @@
 <section class="container">
-    <form id="form-search">
-        <input [(ngModel)]="selectedId" placeholder="Digite o ID">
-        <button (click)="fetchLocationById()">Buscar</button>
+    <form id="form-search" (ngSubmit)="fetchLocationById()">
+        <input [(ngModel)]="selectedId" placeholder="Digite o ID" name="id" required>
+        <button type="submit">Buscar</button>
     </form>
 
-    <ul class="container">
-        <li *ngFor="let location of locations">
-            <img [src]="location.photo" alt="{{location.name}}" width="100">
-            <h3>{{ location.name }}</h3>
-            <p>{{ location.city }}, {{ location.state }}</p>
-            <p>Available Units: {{ location.availableUnits }}</p>
-            <p>WiFi: {{ location.wifi ? 'Sim' : 'Não' }}</p>
-            <p>Laundry: {{ location.laundry ? 'Sim' : 'Não' }}</p>
-            <button (click)="deleteLocation(location.id)">Delete</button>
+    <ul class="grid-container">
+        <li *ngFor="let location of locations" class="card">
+            <img [src]="location.photo" alt="{{location.name}}" class="card-img">
+            <div class="card-content">
+                <h3>{{ location.name }}</h3>
+                <p>{{ location.city }}, {{ location.state }}</p>
+                <p>Available Units: {{ location.availableUnits }}</p>
+                <p>WiFi: {{ location.wifi ? 'Sim' : 'Não' }}</p>
+                <p>Laundry: {{ location.laundry ? 'Sim' : 'Não' }}</p>
+                <button (click)="deleteLocation(location.id)">Delete</button>
+            </div>
         </li>
     </ul>
 </section>

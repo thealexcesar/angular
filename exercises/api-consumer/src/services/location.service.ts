@@ -14,7 +14,9 @@ export class LocationService {
 
     async getLocationById(id: number): Promise<Locations | undefined> {
         const response = await fetch(`${this.url}/${id}`);
-        return await response.json() ?? {};
+        const location = await response.json();
+        console.log(location);
+        return location ?? undefined;
     }
 
     async deleteLocation(id: number): Promise<void> {

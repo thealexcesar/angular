@@ -5,7 +5,7 @@ ng new --help
 ng new my-first-project
 cd my-first-project
 ng serve # --open
-ng generate component home --skip-tests # --inline-template
+ng generate component location --skip-tests # --inline-template
 ```
 
 # CLI npm
