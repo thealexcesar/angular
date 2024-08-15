@@ -128,3 +128,15 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+references/
+**/.idea/*
+**/.idea
+*/.idea
+/.idea
+.idea/
+
+*/.code/
+**/.vscode/
+*/.vscode/
+.vscode/
