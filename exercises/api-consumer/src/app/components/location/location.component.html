@@ -1,0 +1,18 @@
+<section class="container">
+    <form id="form-search">
+        <input [(ngModel)]="selectedId" placeholder="Digite o ID">
+        <button (click)="fetchLocationById()">Buscar</button>
+    </form>
+
+    <ul class="container">
+        <li *ngFor="let location of locations">
+            <img [src]="location.photo" alt="{{location.name}}" width="100">
+            <h3>{{ location.name }}</h3>
+            <p>{{ location.city }}, {{ location.state }}</p>
+            <p>Available Units: {{ location.availableUnits }}</p>
+            <p>WiFi: {{ location.wifi ? 'Sim' : 'Não' }}</p>
+            <p>Laundry: {{ location.laundry ? 'Sim' : 'Não' }}</p>
+            <button (click)="deleteLocation(location.id)">Delete</button>
+        </li>
+    </ul>
+</section>

@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "analyze": "ng build --stats-json && npx webpack-bundle-analyzer dist/stats.json"
+    "analyze": "ng build --stats-json && npx webpack-bundle-analyzer dist/stats.json",
+    "api": "json-server --watch backend/db.json --port 3000"
   },
   "private": true,
   "dependencies": {
